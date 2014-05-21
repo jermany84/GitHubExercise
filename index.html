@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no" />
+    <meta name="description" content="zelda, mobile, game" />
+    <title>The Legend of Zelda - Javascript</title>
+    <link href="css/Application.css" rel="stylesheet" type="text/css">
+</head>
+<body onload="main()">
+<div id="mainContent" role="main">
+    <div class="layer">
+        <div id="mobile-debugger"></div>
+        <canvas id="canvas_game" width="512" height="448">
+            <span class="canvas-error">Your browser does not support Canvas</span>
+        </canvas>
+        <audio id="overworld">
+            <source src="sound/overworld.mp3" type="audio/mpeg" loop="loop">
+        </audio>
+        <audio id="LOZ_Arrow">
+            <source src="sound/LOZ_Arrow.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Bomb_Blow">
+            <source src="sound/LOZ_Bomb_Blow.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Bomb_Drop">
+            <source src="sound/LOZ_Bomb_Drop.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Boomerang">
+            <source src="sound/LOZ_Boomerang.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Candle">
+            <source src="sound/LOZ_Candle.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Die">
+            <source src="sound/LOZ_Die.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Fanfare">
+            <source src="sound/LOZ_Fanfare.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Get_Heart">
+            <source src="sound/LOZ_Get_Heart.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Get_Item">
+            <source src="sound/LOZ_Get_Item.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Get_Rupee">
+            <source src="sound/LOZ_Get_Rupee.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Hit">
+            <source src="sound/LOZ_Hit.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Hurt">
+            <source src="sound/LOZ_Hurt.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Key">
+            <source src="sound/LOZ_Key.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Kill">
+            <source src="sound/LOZ_Kill.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_LowHealth">
+            <source src="sound/LOZ_LowHealth.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_MagicalRod">
+            <source src="sound/LOZ_MagicalRod.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Shield">
+            <source src="sound/LOZ_Shield.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Stairs">
+            <source src="sound/LOZ_Stairs.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Sword_Combined">
+            <source src="sound/LOZ_Sword_Combined.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Sword_Shoot">
+            <source src="sound/LOZ_Sword_Shoot.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Sword">
+            <source src="sound/LOZ_Sword.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Text">
+            <source src="sound/LOZ_Text.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+        <audio id="LOZ_Unlock">
+            <source src="sound/LOZ_Unlock.mp3" type="audio/mpeg" loop="loop">
+            <span class="sound-error">Your browser does not support the audio element</span>
+        </audio>
+    </div>
+</div>
+<!-- SCRIPTS -->
+<script src="js/modernizr-2.6.2.min.js" type="text/javascript"></script>
+<script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+
+<script src="js/astar/phaser.js" type="text/javascript"></script>
+<script src="js/astar/PathFinderPlugin.js" type="text/javascript"></script>
+<script src="js/astar/easystar.js" type="text/javascript"></script>
+
+<script src="js/gamepad/gamepad.js" type="text/javascript"></script>
+<script src="js/resources/resources.js" type="text/javascript"></script>
+<script src="js/sprite/sprite.js" type="text/javascript"></script>
+
+<script src="js/Application.js" type="text/javascript"></script>
+
+<script src="js/vendor/ApplicationFacade.js" type="text/javascript"></script>
+
+<script src="js/modop/util/HashTable.js" type="text/javascript"></script>
+<script src="js/modop/math/MOMath.js" type="text/javascript"></script>
+
+<script src="js/modop/patterns/mediator/AbstractColleague.js" type="text/javascript"></script>
+<script src="js/modop/patterns/mediator/AbstractMediator.js" type="text/javascript"></script>
+
+<script src="js/modop/patterns/observer/Notification.js" type="text/javascript"></script>
+
+<script src="js/modop/patterns/mvc/AbstractController.js" type="text/javascript"></script>
+<script src="js/modop/patterns/mvc/AbstractModel.js" type="text/javascript"></script>
+<script src="js/modop/patterns/mvc/AbstractView.js" type="text/javascript"></script>
+
+<script src="js/vendor/model/AxisAlignedBoundingBoxModel.js" type="text/javascript"></script>
+
+<script src="js/vendor/model/PhysicalViewModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/GameModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/MapDataManagerModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/DestinationModel.js" type="text/javascript"></script>
+
+<script src="js/vendor/model/sound/SoundModel.js" type="text/javascript"></script>
+
+<script src="js/vendor/model/tileMap/TileMapModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/tileMap/EntityTileMapModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/tileMap/GraphicTileMapModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/tileMap/CollisionTileMapModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/tileMap/NpcTileMapModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/tileMap/EnemyTileMapModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/tileMap/HeroTileMapModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/tileMap/PickupTileMapModel.js" type="text/javascript"></script>
+
+<script src="js/vendor/model/tile/TileModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/tile/EntityTileModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/tile/GraphicTileModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/tile/CollisionTileModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/tile/PickupTileModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/tile/NpcTileModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/tile/EnemyTileModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/tile/HeroTileModel.js" type="text/javascript"></script>
+
+<script src="js/vendor/model/data/MapDataModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/data/StartMapDataModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/data/OverworldMapDataModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/data/SwordRoomMapDataModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/data/LongSwordRoomMapDataModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/data/MasterSwordRoomMapDataModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/data/GameOverMapDataModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/data/RoomModel.js" type="text/javascript"></script>
+
+<script src="js/modop/linkedList/NodeModel.js" type="text/javascript"></script>
+<script src="js/modop/linkedList/NodeList.js" type="text/javascript"></script>
+
+<script src="js/vendor/model/ControlModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/CounterModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/gui/MapUIModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/gui/HealthUIModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/gui/EntityUIModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/gui/CursorUIModel.js" type="text/javascript"></script>
+
+<script src="js/vendor/model/ViewStateMachineModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/StageModel.js" type="text/javascript"></script>
+<script src="js/vendor/model/DropsModel.js" type="text/javascript"></script>
+
+<script src="js/vendor/mediator/KeyControlMediator.js" type="text/javascript"></script>
+<script src="js/vendor/mediator/GamepadJSControlMediator.js" type="text/javascript"></script>
+
+<script src="js/vendor/controller/GameController.js" type="text/javascript"></script>
+<script src="js/vendor/controller/StageController.js" type="text/javascript"></script>
+<script src="js/vendor/controller/TileMapController.js" type="text/javascript"></script>
+<script src="js/vendor/controller/EntityTileMapController.js" type="text/javascript"></script>
+<script src="js/vendor/controller/NpcTileMapController.js" type="text/javascript"></script>
+<script src="js/vendor/controller/EnemyTileMapController.js" type="text/javascript"></script>
+<script src="js/vendor/controller/HeroTileMapController.js" type="text/javascript"></script>
+<script src="js/vendor/controller/EntityUIController.js" type="text/javascript"></script>
+<script src="js/vendor/controller/StartController.js" type="text/javascript"></script>
+<script src="js/vendor/controller/GameOverController.js" type="text/javascript"></script>
+<script src="js/vendor/controller/PickupTileMapController.js" type="text/javascript"></script>
+<script src="js/vendor/controller/DropsController.js" type="text/javascript"></script>
+
+<script src="js/vendor/view/AxisAlignedBoundingBoxView.js" type="text/javascript"></script>
+
+<script src="js/vendor/view/projectile/ProjectileView.js" type="text/javascript"></script>
+
+<script src="js/vendor/view/projectile/factory/HeroProjectileViewFactory.js" type="text/javascript"></script>
+
+<script src="js/vendor/view/tile/TileView.js" type="text/javascript"></script>
+<script src="js/vendor/view/tile/EntityTileView.js" type="text/javascript"></script>
+<script src="js/vendor/view/tile/NpcTileView.js" type="text/javascript"></script>
+<script src="js/vendor/view/tile/EnemyTileView.js" type="text/javascript"></script>
+<script src="js/vendor/view/tile/HeroTileView.js" type="text/javascript"></script>
+<script src="js/vendor/view/tile/PickupTileView.js" type="text/javascript"></script>
+
+<script src="js/vendor/view/tile/factory/GraphicTileViewFactory.js" type="text/javascript"></script>
+<script src="js/vendor/view/tile/factory/CollisionTileViewFactory.js" type="text/javascript"></script>
+<script src="js/vendor/view/tile/factory/PickupTileViewFactory.js" type="text/javascript"></script>
+<script src="js/vendor/view/tile/factory/NpcTileViewFactory.js" type="text/javascript"></script>
+<script src="js/vendor/view/tile/factory/EnemyTileViewFactory.js" type="text/javascript"></script>
+<script src="js/vendor/view/tile/factory/HeroTileViewFactory.js" type="text/javascript"></script>
+
+<script src="js/vendor/view/gui/EntityHealthUIView.js" type="text/javascript"></script>
+<script src="js/vendor/view/gui/MapUIView.js" type="text/javascript"></script>
+<script src="js/vendor/view/gui/CounterView.js" type="text/javascript"></script>
+<script src="js/vendor/view/gui/ButtonActionPickupTileView.js" type="text/javascript"></script>
+<script src="js/vendor/view/gui/EntityUIView.js" type="text/javascript"></script>
+
+<script src="js/vendor/view/StageView.js" type="text/javascript"></script>
+<script src="js/vendor/view/StartView.js" type="text/javascript"></script>
+<script src="js/vendor/view/GameView.js" type="text/javascript"></script>
+<script src="js/vendor/view/GameOverView.js" type="text/javascript"></script>
+
+</body>
+</html>
