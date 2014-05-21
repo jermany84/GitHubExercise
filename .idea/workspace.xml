@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b9e27306-dab1-4910-8578-ba354bc841ee" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/Application.css" afterPath="$PROJECT_DIR$/css/Application.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-    </list>
+    <list default="true" id="b9e27306-dab1-4910-8578-ba354bc841ee" name="Default" comment="" />
     <ignored path="git-exercise-2.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
